@@ -31,8 +31,12 @@ pull:
 
 # Run unit tests
 test:
-	docker-compose run --rm app ./manage.py test
+	$(DOCKER_COMPOSE) run --rm app ./manage.py test
 
-#
+# Run code linter
 lint:
-	docker-compose run --rm app flake8
+	$(DOCKER_COMPOSE) run --rm app flake8
+
+# Access to container bash
+bash:
+	$(DOCKER) exec -it app bash
